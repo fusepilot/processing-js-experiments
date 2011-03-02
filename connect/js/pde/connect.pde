@@ -29,6 +29,8 @@ void draw()
     circle = circles[i];
     circle.x = circle.x + circle.sX;
     circle.y = circle.y + circle.sY;
+    if(circle.x > 800 || circle.x <= 0) circle.sX *= -1;
+    if(circle.y > 600 || circle.y <= 0) circle.sY *= -1;
   }
   
   //render circles on top
@@ -50,10 +52,8 @@ void draw()
 void addCircle()
 {
   circle = new Circle(random(0, 1000), random(0, 600));
-  circle.sX = random(-.5, .5);
-  circle.sY = random(-.5, .5);
-  if(circle.x > 800) circle.sX *= -1;
-  if(circle.y > 600) circle.sY *= -1;
+  circle.sX = random(-2, 2);
+  circle.sY = random(-2, 2);
   circle.render();
   
   for(int k = 0; k < circles.length; k++) {
